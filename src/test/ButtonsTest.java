@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Scanner;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import main.Buttons;
@@ -18,11 +18,7 @@ public class ButtonsTest {
         buttons = new Buttons(10, new Scanner(System.in), new Logger());
     }
 
-    @Test
-    public void demoTestMethod() {
-        assertTrue(true);
-    }
-
+    // In a more robust test suite, would test that input correctly adds to request lists
     @Test
     public void testStopRequest() {
 
