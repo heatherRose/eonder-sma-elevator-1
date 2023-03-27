@@ -7,6 +7,8 @@ public class Scheduler implements Runnable {
     private Buttons buttons;
     private Logger logger;
 
+    private final int BUFFER_TIME = 10;
+
     public Scheduler(int numFloors, Scanner scanner) {
         this.logger = new Logger();
         this.elevator = new Elevator(logger);
@@ -34,7 +36,7 @@ public class Scheduler implements Runnable {
                 }
             }
             try {
-                Thread.sleep(1);
+                Thread.sleep(BUFFER_TIME);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 continue;

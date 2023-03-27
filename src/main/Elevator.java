@@ -9,6 +9,10 @@ public class Elevator implements Runnable {
     private int weight = 0;
     private int weightLimit = 1000;
     private boolean stop = false;
+    
+    private final int STOP_TIME = 1000;
+    private final int MOVE_FLOOR_TIME = 3000;
+    private final int BUFFER_TIME = 10;
 
     public Elevator(Logger logger) {
         this.logger = logger;
@@ -28,7 +32,7 @@ public class Elevator implements Runnable {
                 }
             }
             try {
-                Thread.sleep(1);
+                Thread.sleep(BUFFER_TIME);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -37,18 +41,18 @@ public class Elevator implements Runnable {
 
     private void stopAtFloor() {
         logger.logStop(currentFloor);
+        isStopped = true;
         try {
-            Thread.sleep(1000);
+            Thread.sleep(STOP_TIME);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        isStopped = true;
     }
 
     private void moveOneFloor() {
         isStopped = false;
         try {
-            Thread.sleep(3000);
+            Thread.sleep(MOVE_FLOOR_TIME);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
